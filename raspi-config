@@ -1860,7 +1860,7 @@ do_journald_storage() {
       *) JSTRING=""
       ;;
     esac
-    REPLACEMENT="$([ ! -z $JSTRING ] && echo "Storage=$JSTRING" || echo "#Storage=")"
+    REPLACEMENT="$([ ! -z $JSTRING ] && echo "Storage=$JSTRING" || echo "#Storage=auto")"
     sed --in-place -E "s/^#?Storage=.*/${REPLACEMENT}/" /etc/systemd/journald.conf
     if [ "$INTERACTIVE" = True ]; then
       whiptail --msgbox "Logging location set to ${JSTRING:-default}" 20 60 1
